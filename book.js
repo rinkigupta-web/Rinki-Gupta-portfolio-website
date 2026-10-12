@@ -43,7 +43,9 @@ const BOOK_PROJECTS_DATA = {
       metrics: { label1: "AR Accuracy", val1: "99.2%", label2: "Style Match", val2: "AI-Curated" },
       accentColor: "#ea580c",
       previewType: "image",
-      image: "images/projects/futuroom_screen.jpg"
+      image: "images/projects/futuroom_screen.jpg",
+      imageFit: "cover",
+      imagePosition: "55% 45%"
     },
     {
       pageNumber: 2,
@@ -54,13 +56,14 @@ const BOOK_PROJECTS_DATA = {
       categoryTheme: "cyan",
       year: "2026",
       behanceUrl: "https://www.behance.net/gallery/256099963/URELIA-JEWELERY-E-COMMERCE-WEBSITE-APP-DESIGN",
-      summary: "Premium contemporary jewellery digital experience bridging Indian craftsmanship with modern minimalism. Created via an AI-assisted design workflow using Google Stitch to explore bespoke discovery, storytelling, and atelier curation.",
+      summary: "An elegant jewellery website blending Indian craftsmanship with contemporary minimalism. Designed using Google Stitch to explore AI-assisted workflows, visual storytelling, and curated discovery.",
       tags: ["Google Stitch", "AI Workflow", "E-Commerce", "Editorial UI", "Jewellery"],
       metrics: { label1: "AI Workflow", val1: "Google Stitch", label2: "Design Focus", val2: "Storytelling" },
       accentColor: "#06b6d4",
       previewType: "image",
       image: "images/projects/urelia_screen.jpg",
-      imagePosition: "50% 35%"
+      imageFit: "cover",
+      imagePosition: "50% 25%"
     },
     {
       pageNumber: 3,
@@ -71,13 +74,14 @@ const BOOK_PROJECTS_DATA = {
       categoryTheme: "purple",
       year: "2026",
       behanceUrl: "https://www.behance.net/gallery/255944797/WANDORA-TRAVEL-WEBSITE",
-      summary: "Modern travel discovery and trip planning platform designed to make destination exploration simple, intuitive, and visually engaging. Features curated journey itineraries, seamless booking flows, and responsive layouts across devices.",
+      summary: "A modern travel discovery and trip-planning experience with intuitive navigation, curated destinations, seamless booking flows, and responsive layouts.",
       tags: ["Travel UX", "Web Design", "Journey Planner", "Responsive UI", "Figma"],
       metrics: { label1: "Discovery Flow", val1: "Intuitive", label2: "Design Focus", val2: "Travel UX" },
       accentColor: "#8b5cf6",
       previewType: "image",
       image: "images/projects/wandora_screen.jpg",
-      imagePosition: "50% 30%"
+      imageFit: "cover",
+      imagePosition: "50% 25%"
     },
     {
       pageNumber: 4,
@@ -88,12 +92,13 @@ const BOOK_PROJECTS_DATA = {
       categoryTheme: "purple",
       year: "2025",
       behanceUrl: "https://www.behance.net/gallery/228792971/Branchwood-App-UX-UI-Design-Case-study",
-      summary: "Mobile furniture-shopping app created entirely in Figma with a hands-on UX/UI design approach. Focuses on effortless product discovery, clear navigation, and confident buyer decisions with transparent specifications, reviews, and dimensions.",
+      summary: "Mobile furniture-shopping app created entirely in Figma with a hands-on UX/UI design approach. Focuses on effortless product discovery, clear navigation, and confident buyer decisions with transparent specifications.",
       tags: ["Figma", "Mobile App", "Design System", "E-Commerce", "UI Components"],
       metrics: { label1: "Creation Tool", val1: "100% Figma", label2: "Design Approach", val2: "Hands-on UX" },
       accentColor: "#2563eb",
       previewType: "image",
       image: "images/projects/branchwood_screen.jpg",
+      imageFit: "cover",
       imagePosition: "50% 50%"
     }
   ],
@@ -387,23 +392,21 @@ class PortfolioBook {
         </div>
 
         <!-- Interactive Visual Showcase Mockup / Card -->
-        <div class="project-visual-card" data-behance-url="${project.behanceUrl}">
+        <div class="project-visual-card" data-behance-url="${project.behanceUrl}" title="View ${project.title} Case Study on Behance">
           <div class="card-preview-art preview-${project.previewType}">
             <!-- Project Real Image or Vector Art Mockup -->
-            ${project.image ? `<img src="${project.image}" alt="${project.title}" class="project-hero-img" style="${project.imagePosition ? `object-position: ${project.imagePosition};` : ''}" loading="lazy" />` : this.generateMockupSvg(project.previewType, project.accentColor)}
+            ${project.image ? `<img src="${project.image}" alt="${project.title} Showcase" class="project-hero-img" style="object-fit: ${project.imageFit || 'cover'}; object-position: ${project.imagePosition || '50% 50%'};" loading="lazy" />` : this.generateMockupSvg(project.previewType, project.accentColor)}
             <div class="art-overlay-glass">
               <span class="art-inspect-pill">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
                 Inspect Case Study
               </span>
             </div>
-          </div>
-          <!-- Clickable Behance Action Button -->
-          <div class="behance-action-row">
-            <button class="btn-behance-view" data-behance-url="${project.behanceUrl}" type="button">
-              <span>View Case Study on Behance</span>
+            <!-- Floating Behance Badge -->
+            <a href="${project.behanceUrl}" target="_blank" rel="noopener noreferrer" class="card-behance-badge btn-behance-view" data-behance-url="${project.behanceUrl}" aria-label="View ${project.title} Case Study on Behance">
+              <span>View on Behance</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </button>
+            </a>
           </div>
         </div>
 
@@ -868,11 +871,12 @@ class PortfolioBook {
       }
     }
 
-    // Check if clicked on Behance View Button or Card
-    const behanceBtn = e.target.closest('.btn-behance-view') || e.target.closest('.project-visual-card');
+    // Check if clicked on Behance View Button, Badge, or Card
+    const behanceBtn = e.target.closest('.btn-behance-view') || e.target.closest('.card-behance-badge') || e.target.closest('.project-visual-card');
     if (behanceBtn) {
-      const url = behanceBtn.dataset.behanceUrl || behanceBtn.closest('[data-behance-url]')?.dataset.behanceUrl;
+      const url = behanceBtn.dataset.behanceUrl || behanceBtn.closest('[data-behance-url]')?.dataset.behanceUrl || behanceBtn.getAttribute('href');
       if (url && !this.hasJustDragged) {
+        e.preventDefault();
         // Show non-intrusive feedback toast & open in new tab
         this.showBehanceToast(url);
         window.open(url, '_blank', 'noopener,noreferrer');

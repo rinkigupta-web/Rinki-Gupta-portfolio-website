@@ -2621,11 +2621,15 @@ button {
   height: 100%;
   background-color: #fafafc;
   color: #111216;
-  padding: 36px 36px 32px 36px;
+  padding: 30px 32px 26px 32px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
+}
+
+.editorial-page.project-page {
+  padding: 24px 28px 20px 28px;
 }
 
 [data-theme="dark"] .editorial-page {
@@ -2643,7 +2647,7 @@ button {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #505364;
-  padding-bottom: 12px;
+  padding-bottom: 8px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
@@ -2660,7 +2664,7 @@ button {
   font-weight: 700;
   letter-spacing: 0.1em;
   color: #505364;
-  padding-top: 12px;
+  padding-top: 8px;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
   margin-top: auto;
 }
@@ -3024,21 +3028,21 @@ button {
    ========================================================== */
 
 .project-page-header {
-  margin: 10px 0 16px 0;
+  margin: 6px 0 10px 0;
 }
 
 .project-num-row {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .big-folio-num {
   font-family: var(--font-display);
-  font-size: 3.2rem;
+  font-size: 2.2rem;
   font-weight: 900;
-  line-height: 0.9;
+  line-height: 0.95;
   letter-spacing: -0.05em;
   color: var(--accent-magenta);
 }
@@ -3048,7 +3052,7 @@ button {
   font-weight: 700;
   color: var(--text-muted);
   background: rgba(0, 0, 0, 0.05);
-  padding: 3px 8px;
+  padding: 2px 8px;
   border-radius: 6px;
 }
 
@@ -3058,17 +3062,18 @@ button {
 
 .project-headline-title {
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: inherit;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
+  line-height: 1.2;
 }
 
 .project-sub-title {
-  font-size: 1rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1.35;
   color: var(--text-secondary);
 }
 
@@ -3079,9 +3084,10 @@ button {
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-  margin-bottom: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  margin-bottom: 12px;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: pointer;
 }
 
 [data-theme="dark"] .project-visual-card {
@@ -3092,18 +3098,20 @@ button {
 
 .project-visual-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
 }
 
 .card-preview-art {
   position: relative;
   width: 100%;
-  height: 180px;
+  height: 225px;
+  aspect-ratio: 16 / 9;
+  max-height: 230px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #121319;
+  background: #0f1015;
 }
 
 .preview-svg-canvas {
@@ -3116,26 +3124,25 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 60%;
+  object-position: 50% 50%;
   display: block;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .project-visual-card:hover .project-hero-img {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .art-overlay-glass {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.1) 40%, transparent 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   transition: opacity var(--transition-fast);
+  pointer-events: none;
 }
 
 .project-visual-card:hover .art-overlay-glass {
@@ -3152,7 +3159,7 @@ button {
   font-weight: 700;
   padding: 6px 14px;
   border-radius: 9999px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .art-inspect-pill svg {
@@ -3160,86 +3167,99 @@ button {
   height: 14px;
 }
 
-/* Behance Action Button */
-.behance-action-row {
-  padding: 10px 14px;
-  background: rgba(0, 0, 0, 0.02);
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-[data-theme="dark"] .behance-action-row {
-  background: rgba(255, 255, 255, 0.02);
-  border-top-color: rgba(255, 255, 255, 0.05);
-}
-
-.btn-behance-view {
-  width: 100%;
+/* Floating Behance Badge on Image */
+.card-behance-badge {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 5;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 8px 12px;
-  background: transparent;
-  color: var(--accent-magenta);
-  border: 1px dashed rgba(236, 72, 153, 0.4);
-  border-radius: 8px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
-}
-
-.btn-behance-view:hover {
-  background: var(--accent-magenta);
+  gap: 6px;
+  padding: 5px 12px;
+  background: rgba(18, 19, 25, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
   color: #ffffff;
-  border-style: solid;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  transition: background var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+  cursor: pointer;
 }
 
-.btn-behance-view svg {
-  width: 14px;
-  height: 14px;
+.card-behance-badge svg {
+  width: 13px;
+  height: 13px;
+  stroke: var(--accent-magenta);
+  transition: transform var(--transition-fast);
+}
+
+.card-behance-badge:hover,
+.project-visual-card:hover .card-behance-badge {
+  background: rgba(18, 19, 25, 0.95);
+  border-color: var(--accent-magenta);
+  box-shadow: 0 4px 18px rgba(236, 72, 153, 0.35);
+}
+
+.card-behance-badge:hover svg,
+.project-visual-card:hover .card-behance-badge svg {
+  transform: translate(2px, -2px);
+}
+
+/* Behance Action Row */
+.behance-action-row {
+  display: none;
 }
 
 /* Project Narrative & Context */
 .project-narrative-box {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .project-summary-text {
-  font-size: 0.96rem;
-  line-height: 1.65;
+  font-size: 0.88rem;
+  line-height: 1.55;
   color: var(--text-secondary);
+  margin: 0;
 }
 
 .project-stats-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 10px;
   background: rgba(0, 0, 0, 0.03);
-  padding: 10px 14px;
+  padding: 8px 12px;
   border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 [data-theme="dark"] .project-stats-row {
   background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.06);
 }
 
 .stat-item {
   display: flex;
   flex-direction: column;
+  gap: 2px;
 }
 
 .stat-v {
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   font-weight: 800;
   color: var(--accent-magenta);
 }
 
 .stat-l {
-  font-size: 0.76rem;
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -3247,15 +3267,16 @@ button {
 }
 
 .project-tags-cloud {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
+  font-size: 0.78rem;
+  color: var(--text-muted);
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1.45;
 }
 
 .proj-tag {
   margin-right: 6px;
   display: inline-block;
+  color: var(--text-secondary);
 }
 
 /* COLOPHON PAGE */
@@ -3503,12 +3524,22 @@ button {
     padding: 24px;
   }
 
+  .editorial-page.project-page {
+    padding: 18px 20px 14px 20px;
+  }
+
   .big-folio-num {
-    font-size: 2.6rem;
+    font-size: 1.85rem;
   }
 
   .card-preview-art {
-    height: 140px;
+    height: 175px;
+    max-height: 180px;
+  }
+
+  .project-summary-text {
+    font-size: 0.82rem;
+    line-height: 1.5;
   }
 }
 
@@ -3541,23 +3572,54 @@ button {
     padding: 16px;
   }
 
+  .editorial-page.project-page {
+    padding: 12px 14px 10px 14px;
+  }
+
   .big-folio-num {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .project-headline-title {
-    font-size: 1.05rem;
+    font-size: 0.98rem;
+  }
+
+  .project-sub-title {
+    font-size: 0.76rem;
   }
 
   .card-preview-art {
-    height: 100px;
+    height: 130px;
+    max-height: 135px;
+  }
+
+  .card-behance-badge {
+    padding: 4px 8px;
+    font-size: 0.68rem;
+    bottom: 6px;
+    right: 6px;
   }
 
   .project-summary-text {
+    font-size: 0.76rem;
+    line-height: 1.4;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  .project-stats-row {
+    padding: 5px 8px;
+    gap: 6px;
+  }
+
+  .stat-v {
+    font-size: 0.82rem;
+  }
+
+  .stat-l {
+    font-size: 0.6rem;
   }
 
   .book-interaction-hints {
