@@ -1,0 +1,41 @@
+# ==========================================================
+# .gitignore — Rinki Gupta Portfolio
+# ==========================================================
+
+# OS & System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+
+# Editor & IDE Directories
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Vercel & Node
+.vercel/
+node_modules/
+npm-debug.log*
+
+# Redundant archives & temporary screenshots
+*.zip
+screenshot*.png
+screenshot*.jpeg
+screenshot*.jpg
+Screenshot*.png
+
+# Legacy template files (original reference backup)
+Jack*
+
+# Scratch & backup sprite iterations
+ChatGPT Image*
+girl image.png
+girl_about.png
+girl_character.png
+girl_character_sprites_2x2_backup.png
+girl_character_sprites_6states.png
+girl_character_sprites_seamless.png
+girl_eye_sprites*
+girl_sprites_aligned.png

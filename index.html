@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Rinki Gupta — Portfolio</title>
+  <meta name="description" content="Portfolio of Rinki Gupta — UX/UI Designer & Graphic Designer featuring interactive digital experiences, mobile & web design, and creative case studies." />
+  
+  <!-- Fonts: Plus Jakarta Sans & Syne -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Top Floating Pill Navbar -->
+  <header class="navbar-wrapper">
+    <nav class="navbar-pill" aria-label="Main Navigation">
+      <div class="nav-brand">
+        <a href="#hero" class="brand-logo">RG+</a>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+
+        <!-- Dark/Light Theme Toggle -->
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark/light theme" title="Toggle Theme">
+          <svg class="icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+
+        <!-- CTA Button -->
+        <a href="Rinki_Gupta_CV.pdf" download="Rinki_Gupta_CV.pdf" class="btn-talk" style="background: transparent; color: var(--text-primary); border: 1px solid var(--border-light);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Download CV</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- HERO SCROLL TRACK (Multi-viewport scroll area)            -->
+  <!-- ======================================================== -->
+  <section class="hero-scroll-container" id="hero">
+    <!-- Pinned 100vh Sticky Stage -->
+    <div class="hero-sticky-stage">
+      
+      <!-- High-Performance Canvas for 360° Sequential Animation -->
+      <canvas id="hero-canvas" class="hero-canvas" aria-label="Interactive 360 degree 3D character animation"></canvas>
+      
+      <!-- Subtle Studio Lighting & Radial Vignette Overlay -->
+      <div class="studio-lighting" aria-hidden="true"></div>
+
+      <!-- Hero Foreground Content Layer -->
+      <div class="hero-content-layer">
+        
+        <!-- Top Subheader Row -->
+        <div class="hero-top-row">
+          <div class="badge-role" style="background: transparent; border: none; box-shadow: none; font-size: 0.85rem; padding-left: 0;">
+            <span style="font-family: monospace; letter-spacing: 0.15em; text-transform: uppercase;">UX/UI DESIGNER + AI-ASSISTED DEVELOPER</span>
+          </div>
+        </div>
+
+        <!-- Giant Typography & Headings -->
+        <div class="hero-center-copy">
+          <h1 class="hero-headline" style="text-transform: none; font-size: clamp(2.2rem, 4vw, 4rem); line-height: 1.1;">
+            <span class="headline-row row-dark" style="margin-bottom: -0.2em;">Designing digital</span>
+            <span class="headline-row row-dark" style="margin-bottom: -0.2em;">experiences</span>
+            <span class="headline-row row-dark">that feel <span class="row-gradient" style="font-style: italic;">human.</span> <span style="font-size: 0.4em; vertical-align: middle;">✦</span></span>
+          </h1>
+
+          <p class="hero-description">
+            I create intuitive, visually engaging and human-centered digital products — blending design thinking with AI tools to build experiences that make a difference.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#work" class="btn-primary">View My Work <span style="margin-left: 8px;">→</span></a>
+            <a href="#about" class="btn-secondary">About Me</a>
+          </div>
+        </div>
+
+        <!-- Bottom Controls & Scrub Bar -->
+        <div class="hero-bottom-row">
+          
+          <!-- Scroll Hint Indicator and Status -->
+          <div class="bottom-left-group" style="display: flex; flex-direction: column; gap: 16px;">
+            <div class="status-indicator" style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text-secondary); padding-left: 4px;">
+              <span class="status-dot" style="width: 8px; height: 8px; background-color: #10b981; border-radius: 50%; box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);"></span>
+              <span>Available for new opportunities</span>
+            </div>
+            <div class="scroll-scrub-hint" style="background: transparent; border: none; box-shadow: none; padding-left: 0;">
+              <div class="mouse-icon" style="width: 14px; height: 22px;">
+                <span class="mouse-wheel" style="width: 2px; height: 4px;"></span>
+              </div>
+              <span class="hint-text" style="text-transform: none; font-weight: normal; font-size: 0.85rem; letter-spacing: 0;">Scroll down</span>
+            </div>
+          </div>
+
+          <!-- Interactive 360° Scrub Pill Controller -->
+          <div class="scrub-pill-widget" role="region" aria-label="Animation scrub controls">
+
+            <!-- Scrub Slider Track -->
+            <div class="scrub-track-wrapper">
+              <input 
+                type="range" 
+                id="scrub-slider" 
+                min="1" 
+                max="192" 
+                value="1" 
+                step="1" 
+                aria-label="Frame scrubber"
+              />
+              <div class="scrub-progress-fill" id="scrub-fill"></div>
+            </div>
+
+            <!-- Frame Counter & Preload State -->
+            <div class="scrub-meta">
+              <span class="frame-count">
+                <strong id="frame-display">001</strong> <span class="dim">/ 192</span>
+              </span>
+              <span class="angle-badge" id="angle-display">0°</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Preload Status Progress Bar (subtle at bottom edge) -->
+        <div class="preload-bar-container" id="preload-container" title="Asset Preload Status">
+          <div class="preload-bar" id="preload-bar"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- ABOUT ME SECTION (Playful, Creative & Editorial)          -->
+  <!-- ======================================================== -->
+  <!-- ======================================================== -->
+  <!-- ABOUT ME SECTION (Playful, Colorful & Personal)           -->
+  <!-- ======================================================== -->
+  <section class="section-about-stage" id="about">
+    <div class="about-container">
+      
+      <!-- Top Tagline & Badge -->
+      <div class="about-header-badge">
+        <span class="badge-pill">
+          <span class="badge-dot"></span>
+          ABOUT ME
+        </span>
+        <p class="badge-tagline">“Designer by profession. Artist by nature. Curious about everything in between.”</p>
+      </div>
+
+      <!-- ROW 1: Visual Showcase (Girl on Left + 4 Cards on Right in 2x2 Grid) -->
+      <div class="about-showcase-row">
+        
+        <!-- Left Side: Girl Character Stage (Vertically Centered with Cards) -->
+        <div class="about-girl-col">
+          <div class="central-girl-container" id="girl-container">
+            <div class="girl-ambient-glow"></div>
+            
+            <div class="girl-visual-wrapper" id="girl-visual">
+              <div class="girl-sprite-box state-center" id="girl-sprite" role="img" aria-label="Rinki — 3D Character"></div>
+            </div>
+
+            <!-- Playful Floating Micro-Elements -->
+            <div class="playful-micro-elements" aria-hidden="true">
+              <span class="micro-pill pill-figma"><span class="micro-dot pink-dot"></span>Figma</span>
+              <span class="micro-pill pill-ux"><span class="micro-dot purple-dot"></span>UX/UI</span>
+              <span class="micro-pill pill-art"><span class="micro-dot peach-dot"></span>Digital Art</span>
+              <span class="micro-pill pill-ai"><span class="micro-dot cyan-dot"></span>AI × Design</span>
+              
+              <span class="doodle-sparkle sparkle-1">✦</span>
+              <span class="doodle-sparkle sparkle-2">★</span>
+              <span class="doodle-sparkle sparkle-3">✦</span>
+              <span class="doodle-heart">♥</span>
+              
+              <svg class="doodle-curve" viewBox="0 0 60 20" fill="none">
+                <path d="M2 14C16 4 38 18 56 6" stroke="var(--accent-magenta)" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 3"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: 4 About Me Cards 2x2 Grid -->
+        <div class="about-cards-col" id="about-workspace">
+          <!-- 4 Floating Glass Cards Arranged in Clean 2x2 Grid -->
+          <div class="floating-cards-container">
+            
+            <!-- CARD 01: UX/UI DESIGN (Lavender / Purple) -->
+            <div class="about-glass-card card-01 card-theme-purple" data-tilt>
+              <div class="card-header-row">
+                <span class="card-number">01</span>
+                <div class="card-icon-wrap icon-purple">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                </div>
+              </div>
+              <h3 class="card-title">UX/UI DESIGN</h3>
+              <p class="card-description">Designing intuitive digital experiences with a focus on usability, structure and visual clarity.</p>
+            </div>
+
+            <!-- CARD 02: DIGITAL ART (Pink / Magenta) -->
+            <div class="about-glass-card card-02 card-theme-magenta" data-tilt>
+              <div class="card-header-row">
+                <span class="card-number">02</span>
+                <div class="card-icon-wrap icon-magenta">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+                </div>
+              </div>
+              <h3 class="card-title">DIGITAL ART</h3>
+              <p class="card-description">Creating digital paintings, illustrations and visual experiments through color, composition and storytelling.</p>
+            </div>
+
+            <!-- CARD 03: CREATIVE DESIGN (Warm Cream / Peach / Rose) -->
+            <div class="about-glass-card card-03 card-theme-peach" data-tilt>
+              <div class="card-header-row">
+                <span class="card-number">03</span>
+                <div class="card-icon-wrap icon-rose">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"/><path d="M4 10h16"/><path d="M10 4v16"/></svg>
+                </div>
+              </div>
+              <h3 class="card-title">CREATIVE DESIGN</h3>
+              <p class="card-description">My graphic-design background helps me bring typography, composition and visual communication into digital products.</p>
+            </div>
+
+            <!-- CARD 04: AI × DESIGN (Soft Blue / Cyan / Violet) -->
+            <div class="about-glass-card card-04 card-theme-cyan" data-tilt>
+              <div class="card-header-row">
+                <span class="card-number">04</span>
+                <div class="card-icon-wrap icon-cyan">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                </div>
+              </div>
+              <h3 class="card-title">AI × DESIGN</h3>
+              <p class="card-description">Exploring AI-assisted workflows, rapid prototyping and creative development to turn ideas into interactive experiences.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ROW 2: Full-Width Editorial Content Row (Heading on Left + Paragraph on Right) -->
+      <div class="about-editorial-row">
+        
+        <!-- Left: Editorial Headline -->
+        <div class="about-editorial-heading-col">
+          <h2 class="about-headline">
+            A little about<br>
+            <span class="highlight-gradient">the person</span><br>
+            behind the pixels.
+          </h2>
+        </div>
+
+        <!-- Right: Intro Paragraph & Quick Metrics -->
+        <div class="about-editorial-content-col">
+          <p class="about-intro-paragraph">
+            Hi, I'm <strong class="name-accent">Rinki</strong> — a UX/UI designer and digital artist who loves turning ideas into visual experiences. My background in graphic design and digital art shapes the way I think about interfaces, storytelling and interaction. I also explore AI-assisted design and creative development to bring ideas to life faster.
+          </p>
+
+          <!-- Quick Highlight Badges -->
+          <div class="about-quick-metrics">
+            <div class="quick-metric-card metric-ux">
+              <span class="metric-val">UX / UI</span>
+              <span class="metric-lbl">Product & Systems</span>
+            </div>
+            <div class="quick-metric-card metric-art">
+              <span class="metric-val">Digital Art</span>
+              <span class="metric-lbl">Painting & Story</span>
+            </div>
+            <div class="quick-metric-card metric-ai">
+              <span class="metric-val">AI × Design</span>
+              <span class="metric-lbl">Creative Code</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Personality Element: Things I love exploring -->
+      <div class="about-personality-bar">
+        <div class="personality-label">
+          <span class="sparkle-symbol">✦</span>
+          <span>Things I love exploring</span>
+        </div>
+        <div class="personality-pills-row">
+          <span class="explore-pill"><span class="pill-sparkle">●</span>UX Research</span>
+          <span class="explore-pill"><span class="pill-sparkle">●</span>Figma</span>
+          <span class="explore-pill"><span class="pill-sparkle">●</span>Digital Painting</span>
+          <span class="explore-pill"><span class="pill-sparkle">●</span>Illustration</span>
+          <span class="explore-pill"><span class="pill-sparkle">●</span>Visual Design</span>
+          <span class="explore-pill"><span class="pill-sparkle">●</span>AI Tools</span>
+          <span class="explore-pill"><span class="pill-sparkle">●</span>Micro-interactions</span>
+          <span class="explore-pill"><span class="pill-sparkle">●</span>Prototyping</span>
+          <span class="explore-pill"><span class="pill-sparkle">●</span>Creative Experiments</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- WORK SECTION — INTERACTIVE 3D A4 PORTFOLIO BOOK          -->
+  <!-- ======================================================== -->
+  <section class="section-work-stage" id="work">
+    <div class="work-container">
+      
+      <!-- Top Tagline & Badge -->
+      <div class="work-header-badge">
+        <span class="badge-pill">
+          <span class="badge-dot"></span>
+          SELECTED WORK
+        </span>
+        <h2 class="work-headline">
+          Interactive Portfolio <span class="highlight-gradient">Archive</span>
+        </h2>
+        <p class="work-tagline">
+          Explore 4 selected case studies in UX/UI systems, digital concept painting, creative design, and spatial AI.
+        </p>
+      </div>
+
+      <!-- 3D Book Stage Experience -->
+      <div class="book-experience-stage" id="book-stage">
+        
+        <!-- Ambient Stage Glow Backdrop -->
+        <div class="book-stage-glow"></div>
+        
+        <!-- 3D Perspective Wrapper -->
+        <div class="book-perspective-wrapper is-open-spread" id="book-perspective-wrapper">
+          
+          <!-- Soft Ground Shadow beneath Book -->
+          <div class="book-ground-shadow" id="book-ground-shadow"></div>
+          
+          <!-- 3D Book Element with A4 Portrait Proportions -->
+          <div class="book-3d" id="portfolio-book" role="region" aria-label="Interactive 3D A4 Portfolio Book">
+            
+            <!-- Book Spine Binding & Crease Lighting -->
+            <div class="book-spine" id="book-spine">
+              <div class="spine-groove"></div>
+              <div class="spine-highlight"></div>
+            </div>
+            
+            <!-- Left Static Hardcover Base & Paper Thickness Layers -->
+            <div class="book-base-left" id="book-base-left" aria-hidden="true">
+              <div class="page-edge-layers left-edges"></div>
+            </div>
+
+            <!-- Right Static Hardcover Base & Paper Thickness Layers -->
+            <div class="book-base-right" id="book-base-right" aria-hidden="true">
+              <div class="page-edge-layers right-edges"></div>
+            </div>
+
+            <!-- Dynamic Double-Sided Leaves Container (Cover + 4 Pages + Colophon) -->
+            <div class="book-leaves-container" id="book-leaves"></div>
+
+          </div>
+
+        </div>
+
+        <!-- Book Navigation & Controls Bar -->
+        <div class="book-controls-bar">
+          <button class="book-nav-btn prev-btn" id="book-prev-btn" type="button" aria-label="Previous Page">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+            <span>Previous</span>
+          </button>
+
+          <div class="book-pagination-wrap" id="book-pagination">
+            <span class="page-indicator" id="book-page-indicator">Loading Portfolio Book...</span>
+            <div class="page-dots" id="book-page-dots"></div>
+          </div>
+
+          <button class="book-nav-btn next-btn" id="book-next-btn" type="button" aria-label="Next Page">
+            <span>Next</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Subtle Non-Intrusive Interaction Hints -->
+        <div class="book-interaction-hints">
+          <div class="hint-item">
+            <span class="hint-symbol">✦</span>
+            <span>Drag corners to turn in 3D</span>
+          </div>
+          <div class="hint-separator">•</div>
+          <div class="hint-item">
+            <span class="hint-symbol">↗</span>
+            <span>Click case study cards to view on Behance</span>
+          </div>
+          <div class="hint-separator">•</div>
+          <div class="hint-item">
+            <span class="hint-symbol">⌨</span>
+            <span>Use Left/Right arrow keys</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SERVICES SECTION — WATERMELON UI WIGGLING CARDS          -->
+  <!-- ======================================================== -->
+  <section class="section-services-stage" id="services">
+    <div class="services-container">
+      
+      <!-- Top Tagline & Badge -->
+      <div class="services-header-badge">
+        <span class="badge-pill">
+          <span class="badge-dot"></span>
+          SERVICES
+        </span>
+        <h2 class="services-headline">
+          Thoughtful design, from <span class="highlight-gradient">first idea</span> to final interaction.
+        </h2>
+        <p class="services-tagline">
+          Crafting intuitive interfaces, responsive digital platforms, and distinctive visual identities with precision and craft.
+        </p>
+      </div>
+
+      <!-- Wiggling Cards Interactive Stage -->
+      <div class="wiggling-experience-stage" id="services-wiggling-cards">
+        
+        <!-- Ambient Stage Glow Backdrop -->
+        <div class="services-stage-glow"></div>
+
+        <!-- 3D Perspective Viewport -->
+        <div class="wiggling-viewport" id="wiggling-viewport">
+          <div class="wiggling-track" id="wiggling-track" role="region" aria-label="Interactive Service Cards">
+            
+            <!-- CARD 01: UX/UI Design -->
+            <article class="service-wiggle-card card-theme-purple is-active" data-index="0" id="service-card-0">
+              <div class="card-header-meta">
+                <div class="card-icon-bubble">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="3"/>
+                    <path d="M3 9h18"/>
+                    <path d="M9 21V9"/>
+                  </svg>
+                </div>
+                <div class="card-meta-tags">
+                  <span class="service-cat-badge">UX/UI DESIGN</span>
+                  <span class="service-num-folio">01</span>
+                </div>
+              </div>
+
+              <div class="card-body-content">
+                <h3 class="service-title">UX/UI Design</h3>
+                <p class="service-desc">
+                  I design intuitive digital experiences that balance user needs, functionality, and visual clarity.
+                </p>
+
+                <div class="service-deliverables-block">
+                  <span class="deliverables-heading">SERVICES INCLUDED</span>
+                  <ul class="deliverables-list">
+                    <li>
+                      <span class="list-bullet">✦</span>
+                      <span>UX research and user flows</span>
+                    </li>
+                    <li>
+                      <span class="list-bullet">✦</span>
+                      <span>Wireframes and information architecture</span>
+                    </li>
+                    <li>
+                      <span class="list-bullet">✦</span>
+                      <span>High-fidelity UI design in Figma</span>
+                    </li>
+                    <li>
+                      <span class="list-bullet">✦</span>
+                      <span>Responsive website and mobile app interfaces</span>
+                    </li>
+                    <li>
+                      <span class="list-bullet">✦</span>
+                      <span>Usability-focused design decisions</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="card-footer-action">
+                <div class="card-pill-highlight">
+                  <span class="pill-sparkle">✦</span>
+                  <span>User-Centric Systems</span>
+                </div>
+                <div class="card-arrow-circle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"/>
+                    <polyline points="7 7 17 7 17 17"/>
+                  </svg>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 02: Web Design & Interactive Prototyping -->
+            <article class="service-wiggle-card card-theme-magenta" data-index="1" id="service-card-1">
+              <div class="card-header-meta">
+                <div class="card-icon-bubble">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                    <polyline points="2 17 12 22 22 17"/>
+                    <polyline points="2 12 12 17 22 12"/>
+                  </svg>
+                </div>
+                <div class="card-meta-tags">
+                  <span class="service-cat-badge">WEB &amp; PROTOTYPING</span>
+                  <span class="service-num-folio">02</span>
+                </div>
+              </div>
+
+              <div class="card-body-content">
+                <h3 class="service-title">Web Design &amp; Interactive Prototyping</h3>
+                <p class="service-desc">
+                  I create engaging website experiences with clear hierarchy, responsive layouts, and thoughtful interactions.
+                </p>
+
+                <div class="service-deliverables-block">
+                  <span class="deliverables-heading">SERVICES INCLUDED</span>
+                  <ul class="deliverables-list">
+                    <li>
+                      <span class="list-bullet">✦</span>
+                      <span>Landing page and website design</span>
+                    </li>
+                    <li>
+                      <span class="list-bullet">✦</span>
+                      <span>Responsive layouts</span>
+                    </li>
+                    <li>
+                      <span class="list-bullet">✦</span>
+                      <span>Interactive Figma prototypes</span>
+                    </li>
+                    <li>
+                      <span class="list-bullet">✦</span>
+                      <span>Micro-interactions and motion concepts</span>
+                    </li>
+                    <li>
+                      <span class="list-bullet">✦</span>
+                      <span>UI implementation support using HTML and CSS where appropriate</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="card-footer-action">
+                <div class="card-pill-highlight">
+                  <span class="pill-sparkle">✦</span>
+                  <span>Living Prototypes</span>
+                </div>
+                <div class="card-arrow-circle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"/>
+                    <polyline points="7 7 17 7 17 17"/>
+                  </svg>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 03: Graphic Design & Visual Identity -->
+            <article class="service-wiggle-card card-theme-cyan" data-index="2" id="service-card-2">
+              <div class="card-header-meta">
+                <div class="card-icon-bubble">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+                    <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+                    <path d="M2 2l7.586 7.586"/>
+                    <circle cx="11" cy="11" r="2"/>
+                  </svg>
+                </div>
+                <div class="card-meta-tags">
+                  <span class="service-cat-badge">VISUAL IDENTITY</span>
+                  <span class="service-num-folio">03</span>
+                </div>
+              </div>
+
+              <div class="card-body-content">
+                <h3 class="service-title">Graphic Design &amp; Visual Identity</h3>
+                <p class="service-desc">
+                  I create cohesive visual assets that help brands communicate clearly across digital and print media.
+                </p>
+
+                <div class="service-deliverables-block">
+                  <span class="deliverables-heading">SERVICES INCLUDED</span>
+                  <ul class="deliverables-list">
+                    <li>
+                      <span class="list-bullet">✦</span>
+                      <span>Brand visuals and creative direction</span>
+                    </li>
+                    <li>
+                      <span class="list-bullet">✦</span>
+                      <span>Posters, banners, and marketing creatives</span>
+                    </li>
+                    <li>
+                      <span class="list-bullet">✦</span>
+                      <span>Print collateral and promotional materials</span>
+                    </li>
+                    <li>
+                      <span class="list-bullet">✦</span>
+                      <span>Typography and color composition</span>
+                    </li>
+                    <li>
+                      <span class="list-bullet">✦</span>
+                      <span>Digital visual assets</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="card-footer-action">
+                <div class="card-pill-highlight">
+                  <span class="pill-sparkle">✦</span>
+                  <span>Brand Architecture</span>
+                </div>
+                <div class="card-arrow-circle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"/>
+                    <polyline points="7 7 17 7 17 17"/>
+                  </svg>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- Controls Bar: Prev/Next & Dots -->
+        <div class="wiggling-controls-bar">
+          <button class="wiggling-nav-btn prev-btn" id="wiggling-prev-btn" type="button" aria-label="Previous Service">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+            <span>Previous</span>
+          </button>
+
+          <div class="wiggling-dots-wrap" id="wiggling-dots" role="tablist" aria-label="Services Navigation">
+            <button class="wiggling-dot-pill active" data-index="0" role="tab" aria-selected="true" aria-label="Service 01: UX/UI Design">
+              <span class="dot-idx">01</span>
+              <span class="dot-label">UX/UI</span>
+            </button>
+            <button class="wiggling-dot-pill" data-index="1" role="tab" aria-selected="false" aria-label="Service 02: Web Design & Interactive Prototyping">
+              <span class="dot-idx">02</span>
+              <span class="dot-label">Web &amp; Motion</span>
+            </button>
+            <button class="wiggling-dot-pill" data-index="2" role="tab" aria-selected="false" aria-label="Service 03: Graphic Design & Visual Identity">
+              <span class="dot-idx">03</span>
+              <span class="dot-label">Brand &amp; Visual</span>
+            </button>
+          </div>
+
+          <button class="wiggling-nav-btn next-btn" id="wiggling-next-btn" type="button" aria-label="Next Service">
+            <span>Next</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Subtle Swipe & Drag Cue -->
+        <div class="wiggling-hint-row">
+          <span class="hint-sparkle">✦</span>
+          <span>Drag or swipe cards to navigate</span>
+          <span class="hint-divider">•</span>
+          <span>Use arrow keys</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- CONTACT SECTION                                         -->
+  <!-- ======================================================== -->
+  <section class="section-contact-stage" id="contact" aria-labelledby="contact-heading">
+    <div class="contact-stage-glow" aria-hidden="true"></div>
+
+    <div class="contact-container">
+      <div class="contact-grid">
+
+        <!-- Left Column: Context, Availability, Location & Download CV -->
+        <div class="contact-info-col">
+          
+          <!-- Availability Badge -->
+          <div class="availability-badge" role="status" aria-label="Availability Status">
+            <span class="status-pulse-dot" aria-hidden="true"></span>
+            <span>Currently looking for my next opportunity</span>
+          </div>
+
+          <!-- Main Heading -->
+          <h2 id="contact-heading" class="contact-headline">
+            Good ideas start with a conversation.
+          </h2>
+
+          <!-- Supporting Paragraph -->
+          <p class="contact-lead-text">
+            I’m currently looking for my next opportunity in UX/UI design and am open to freelance projects, internships, and creative collaborations. If you have an interesting idea, a role to discuss, or a project in mind, I’d love to hear from you.
+          </p>
+
+          <!-- Location & CV Row -->
+          <div class="contact-meta-row">
+            <div class="contact-location-pill" title="Based in Kolkata, India">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>Kolkata, India</span>
+            </div>
+
+            <a href="Rinki_Gupta_CV.pdf" download="Rinki_Gupta_CV.pdf" class="btn-download-cv" id="contact-cv-btn" title="Download Rinki Gupta's CV (PDF)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download CV</span>
+              <span class="cv-badge">PDF</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Direct Contact Deck (WhatsApp, Email & Socials) -->
+        <div class="contact-actions-deck">
+          
+          <!-- 1. WhatsApp Card -->
+          <div class="direct-contact-card card-whatsapp">
+            <div class="card-header-row">
+              <div class="card-icon-bubble whatsapp-bubble" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+              </div>
+              <div class="card-titles">
+                <span class="card-tag green-tag">FASTEST RESPONSE</span>
+                <span class="card-heading">Chat on WhatsApp</span>
+              </div>
+            </div>
+            <p class="card-desc">Direct messaging for quick questions, role discussions, or instant collaborations.</p>
+            <a href="https://wa.me/918902756585?text=Hi%20Rinki%2C%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20connect%20with%20you%20about%20an%20opportunity%20or%20project." 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="btn-whatsapp-action" 
+               aria-label="Chat on WhatsApp with Rinki Gupta">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="btn-whatsapp-icon" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              <span>Chat on WhatsApp</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="btn-arrow-icon" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          <!-- 2. Direct Email Card (White card, Pink Accent, Clickable mailto, Copy Button) -->
+          <div class="direct-contact-card card-email">
+            <div class="card-header-row">
+              <div class="card-icon-bubble email-bubble" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="card-titles">
+                <span class="card-tag pink-tag">DIRECT EMAIL</span>
+                <span class="card-heading">Email Inbox</span>
+              </div>
+            </div>
+            <a href="mailto:rinkigupta.uxui@gmail.com" class="direct-email-link" title="Send email to Rinki Gupta">
+              rinkigupta.uxui@gmail.com
+            </a>
+            <div class="email-action-row">
+              <a href="mailto:rinkigupta.uxui@gmail.com" class="btn-open-mail" aria-label="Open email client">
+                <span>Send Email</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </a>
+              <button type="button" id="btn-copy-email" class="btn-copy-email" aria-label="Copy email address to clipboard">
+                <span class="copy-icon-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                </span>
+                <span class="copy-text">Copy email</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. Social Connections Row (LinkedIn, Behance, GitHub) -->
+          <div class="contact-socials-grid">
+            
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/rinki-gupta-a73a2b283/" target="_blank" rel="noopener noreferrer" class="social-card" aria-label="LinkedIn profile of Rinki Gupta">
+              <div class="social-card-top">
+                <div class="social-icon-bubble" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                </div>
+                <span class="social-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </span>
+              </div>
+              <span class="social-name">LinkedIn</span>
+              <span class="social-desc">Professional network</span>
+            </a>
+
+            <!-- Behance -->
+            <a href="https://www.behance.net/rinkigupta29" target="_blank" rel="noopener noreferrer" class="social-card" aria-label="Behance portfolio of Rinki Gupta">
+              <div class="social-card-top">
+                <div class="social-icon-bubble" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8h4M4 6h4.5a3 3 0 0 1 2.4 4.8A3.5 3.5 0 0 1 7.5 18H4V6zm10 6.5c0-2.5 1.5-4 4-4s4 1.5 4 4v.5h-8c0 1.5 1 2.5 2.5 2.5 1 0 1.8-.5 2.2-1.3"></path>
+                    <path d="M4 12h4.2M14 13c.2-1.2 1.2-2 2.5-2s2.3.8 2.5 2"></path>
+                  </svg>
+                </div>
+                <span class="social-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </span>
+              </div>
+              <span class="social-name">Behance</span>
+              <span class="social-desc">Design case studies</span>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/rinkigupta-web" target="_blank" rel="noopener noreferrer" class="social-card" aria-label="GitHub profile of Rinki Gupta">
+              <div class="social-card-top">
+                <div class="social-icon-bubble" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                </div>
+                <span class="social-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </span>
+              </div>
+              <span class="social-name">GitHub</span>
+              <span class="social-desc">Code & prototypes</span>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- WEBSITE FOOTER                                            -->
+  <!-- ======================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-container">
+      
+      <!-- Top Row: Brand, Navigation, Social Buttons -->
+      <div class="footer-top-row">
+        
+        <div class="footer-brand-col">
+          <span class="footer-brand-name">Rinki Gupta</span>
+          <span class="footer-brand-desc">UX/UI Designer & Graphic Designer</span>
+        </div>
+
+        <ul class="footer-nav-links" aria-label="Footer Quick Links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="footer-social-icons">
+          <a href="https://www.linkedin.com/in/rinki-gupta-a73a2b283/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+
+          <a href="https://www.behance.net/rinkigupta29" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Behance" title="Behance">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8h4M4 6h4.5a3 3 0 0 1 2.4 4.8A3.5 3.5 0 0 1 7.5 18H4V6zm10 6.5c0-2.5 1.5-4 4-4s4 1.5 4 4v.5h-8c0 1.5 1 2.5 2.5 2.5 1 0 1.8-.5 2.2-1.3"></path>
+              <path d="M4 12h4.2M14 13c.2-1.2 1.2-2 2.5-2s2.3.8 2.5 2"></path>
+            </svg>
+          </a>
+
+          <a href="https://github.com/rinkigupta-web" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="GitHub" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+
+          <a href="mailto:rinkigupta.uxui@gmail.com" class="footer-social-btn" aria-label="Direct Email" title="Send Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Bottom Row: Copyright & Back To Top -->
+      <div class="footer-bottom-row">
+        <span class="footer-copyright">
+          &copy; <span id="current-year">2026</span> Rinki Gupta. All rights reserved.
+        </span>
+
+        <a href="#hero" id="btn-back-to-top" class="btn-back-to-top" aria-label="Scroll back to top">
+          <span>Back to top</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Modular Book Logic -->
+  <script src="book.js"></script>
+  <!-- Modular Services Wiggling Cards Logic -->
+  <script src="services.js"></script>
+  <!-- Modular Contact & Footer Logic -->
+  <script src="contact.js"></script>
+  <!-- Main JavaScript Logic -->
+  <script src="script.js"></script>
+  <script>
+    if (window.location.hash) {
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const target = document.querySelector(window.location.hash);
+          if (target) target.scrollIntoView();
+        }, 100);
+      });
+    }
+  </script>
+</body>
+</html>
+

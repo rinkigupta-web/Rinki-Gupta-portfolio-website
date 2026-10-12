@@ -1,0 +1,25 @@
+{
+  "name": "rinki-gupta-portfolio",
+  "version": "1.0.0",
+  "description": "Personal UX/UI & Graphic Design Portfolio of Rinki Gupta featuring 360° Hero character turntable, interactive 3D flip-book case study archive, Watermelon UI wiggling cards, and direct contact deck.",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rinkigupta-web/Rinki-Gupta-portfolio-website.git"
+  },
+  "keywords": [
+    "portfolio",
+    "ui-ux",
+    "ux-designer",
+    "product-designer",
+    "interactive",
+    "360-turntable",
+    "flipbook",
+    "wiggling-cards"
+  ],
+  "author": "Rinki Gupta <rinkigupta.uxui@gmail.com>",
+  "license": "MIT"
+}
