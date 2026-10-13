@@ -121,7 +121,7 @@
       drawH = Math.round(ch * 0.84);
       drawW = Math.round(drawH * FRAME_ASPECT);
       drawX = Math.round((cw - drawW) / 2);
-      drawY = Math.round(ch * 0.18); // Position character nicely lower so header & text never cover her face
+      drawY = Math.round(ch * 0.20); // Position character nicely lower so header & text never cover her face
     } else {
       drawH = ch;
       drawW = ch * FRAME_ASPECT;
