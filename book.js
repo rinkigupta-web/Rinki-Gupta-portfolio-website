@@ -134,6 +134,12 @@ class PortfolioBook {
     this.leaves = [];
     this.leafCount = 4;
 
+    // Mobile Single-Page Mode State
+    this.isMobile = (window.innerWidth <= 768);
+    this.mobileLeaves = [];
+    this.currentMobilePage = 1; // Default to Table of Contents on mobile
+    this.totalMobilePages = 8;
+
     const urlParams = new URLSearchParams(window.location.search);
     const spreadParam = parseInt(urlParams.get('spread'), 10);
     this.currentSpread = (!isNaN(spreadParam) && spreadParam >= 0 && spreadParam <= this.totalSpreads) ? spreadParam : 1;
@@ -156,16 +162,77 @@ class PortfolioBook {
   }
 
   init() {
-    this.renderLeaves();
-    this.createPaginationDots();
-    this.setupPointerEvents();
+    this.isMobile = (window.innerWidth <= 768);
+
+    if (this.isMobile) {
+      this.initMobileBook();
+    } else {
+      this.initDesktopBook();
+    }
+
     this.setupButtonEvents();
     this.setupKeyboardEvents();
     this.setupResizeObserver();
+  }
+
+  initDesktopBook() {
+    if (!this.container) return;
+    this.container.classList.remove('mobile-single-page');
+    this.container.classList.add('desktop-spread');
+    this.renderLeaves();
+    this.createPaginationDots();
+    this.setupPointerEvents();
     this.updateSpreadState(false);
   }
 
-  // Generate All 4 Physical Double-Sided Leaves
+  initMobileBook() {
+    if (!this.container) return;
+    this.container.classList.add('mobile-single-page');
+    this.container.classList.remove('desktop-spread');
+    this.renderMobileLeaves();
+    this.createMobilePaginationDots();
+    this.setupMobilePointerEvents();
+    this.updateMobileSpreadState(false);
+  }
+
+  // Generate All 8 Single-Page Leaves for Mobile Phone Screens
+  renderMobileLeaves() {
+    if (!this.leavesContainer) return;
+    this.leavesContainer.innerHTML = '';
+    this.mobileLeaves = [];
+
+    const data = BOOK_PROJECTS_DATA;
+    const pages = [
+      { id: 'cover', html: this.generateFrontCoverHtml(data.cover) },
+      { id: 'toc', html: this.generateTocHtml(data.toc, data.pages) },
+      { id: 'p1', html: this.generateProjectPageHtml(data.pages[0], false) },
+      { id: 'p2', html: this.generateProjectPageHtml(data.pages[1], false) },
+      { id: 'p3', html: this.generateProjectPageHtml(data.pages[2], false) },
+      { id: 'p4', html: this.generateProjectPageHtml(data.pages[3], false) },
+      { id: 'colophon', html: this.generateColophonHtml(data.colophon) },
+      { id: 'back_cover', html: this.generateBackCoverHtml(data.cover) }
+    ];
+
+    this.totalMobilePages = pages.length;
+
+    pages.forEach((p, idx) => {
+      const leaf = document.createElement('div');
+      leaf.className = `book-leaf mobile-leaf leaf-m-${idx}`;
+      leaf.dataset.pageIndex = idx;
+      leaf.innerHTML = `
+        <div class="leaf-face front-face">
+          <div class="page-content-wrapper">
+            ${p.html}
+          </div>
+          <div class="page-light-sheen"></div>
+        </div>
+      `;
+      this.leavesContainer.appendChild(leaf);
+      this.mobileLeaves.push(leaf);
+    });
+  }
+
+  // Generate All 4 Physical Double-Sided Leaves (Desktop)
   renderLeaves() {
     if (!this.leavesContainer) return;
     this.leavesContainer.innerHTML = '';
@@ -601,6 +668,146 @@ class PortfolioBook {
     }
   }
 
+  // --- MOBILE SPREAD STATE & NAVIGATION ---
+  updateMobileSpreadState(animate = true) {
+    if (!this.mobileLeaves || this.mobileLeaves.length === 0) return;
+
+    this.mobileLeaves.forEach((leaf, i) => {
+      if (animate) {
+        leaf.style.transition = 'transform 0.45s cubic-bezier(0.25, 1, 0.4, 1), opacity 0.35s ease';
+      } else {
+        leaf.style.transition = 'none';
+      }
+
+      if (i < this.currentMobilePage) {
+        // Turned pages
+        leaf.style.transform = 'rotateY(-180deg)';
+        leaf.style.opacity = '0';
+        leaf.style.zIndex = i + 1;
+        leaf.style.pointerEvents = 'none';
+      } else if (i === this.currentMobilePage) {
+        // Active visible page
+        leaf.style.transform = 'rotateY(0deg)';
+        leaf.style.opacity = '1';
+        leaf.style.zIndex = 20;
+        leaf.style.pointerEvents = 'auto';
+      } else {
+        // Upcoming pages
+        leaf.style.transform = 'rotateY(0deg)';
+        leaf.style.opacity = '1';
+        leaf.style.zIndex = 20 - i;
+        leaf.style.pointerEvents = 'none';
+      }
+    });
+
+    this.updateMobileControls();
+  }
+
+  updateMobileControls() {
+    if (this.prevBtn) {
+      this.prevBtn.disabled = (this.currentMobilePage <= 0);
+      this.prevBtn.style.opacity = this.currentMobilePage <= 0 ? '0.35' : '1';
+    }
+    if (this.nextBtn) {
+      this.nextBtn.disabled = (this.currentMobilePage >= this.totalMobilePages - 1);
+      this.nextBtn.style.opacity = this.currentMobilePage >= this.totalMobilePages - 1 ? '0.35' : '1';
+    }
+
+    if (this.pageIndicator) {
+      switch (this.currentMobilePage) {
+        case 0:
+          this.pageIndicator.innerHTML = `<strong>Cover</strong> &bull; Closed Book`;
+          break;
+        case 1:
+          this.pageIndicator.innerHTML = `<strong>Table of Contents</strong>`;
+          break;
+        case 2:
+          this.pageIndicator.innerHTML = `<strong>Page 01</strong> &bull; FUTUROOM <span class="dim">/ 04</span>`;
+          break;
+        case 3:
+          this.pageIndicator.innerHTML = `<strong>Page 02</strong> &bull; URELIA <span class="dim">/ 04</span>`;
+          break;
+        case 4:
+          this.pageIndicator.innerHTML = `<strong>Page 03</strong> &bull; WANDORA <span class="dim">/ 04</span>`;
+          break;
+        case 5:
+          this.pageIndicator.innerHTML = `<strong>Page 04</strong> &bull; BRANCHWOOD <span class="dim">/ 04</span>`;
+          break;
+        case 6:
+          this.pageIndicator.innerHTML = `<strong>Colophon</strong> &bull; Archive Notes`;
+          break;
+        case 7:
+          this.pageIndicator.innerHTML = `<strong>Back Cover</strong> &bull; Volume One`;
+          break;
+        default:
+          this.pageIndicator.innerHTML = `Page ${this.currentMobilePage + 1} / ${this.totalMobilePages}`;
+      }
+    }
+
+    if (this.pageDotsContainer) {
+      const dots = this.pageDotsContainer.querySelectorAll('.book-dot');
+      dots.forEach((dot, idx) => {
+        if (idx === this.currentMobilePage) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    if (this.perspectiveWrapper) {
+      this.perspectiveWrapper.classList.remove('is-closed-cover', 'is-closed-back', 'is-open-spread');
+      if (this.currentMobilePage === 0) {
+        this.perspectiveWrapper.classList.add('is-closed-cover');
+      } else if (this.currentMobilePage === this.totalMobilePages - 1) {
+        this.perspectiveWrapper.classList.add('is-closed-back');
+      } else {
+        this.perspectiveWrapper.classList.add('is-open-spread');
+      }
+    }
+  }
+
+  createMobilePaginationDots() {
+    if (!this.pageDotsContainer) return;
+    this.pageDotsContainer.innerHTML = '';
+
+    for (let i = 0; i < this.totalMobilePages; i++) {
+      const dot = document.createElement('button');
+      dot.className = `book-dot ${i === this.currentMobilePage ? 'active' : ''}`;
+      dot.setAttribute('aria-label', `Go to page ${i}`);
+      dot.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.flipToMobilePage(i);
+      });
+      this.pageDotsContainer.appendChild(dot);
+    }
+  }
+
+  flipMobileNext() {
+    if (this.currentMobilePage < this.totalMobilePages - 1 && !this.isAnimating) {
+      this.flipToMobilePage(this.currentMobilePage + 1);
+    }
+  }
+
+  flipMobilePrev() {
+    if (this.currentMobilePage > 0 && !this.isAnimating) {
+      this.flipToMobilePage(this.currentMobilePage - 1);
+    }
+  }
+
+  flipToMobilePage(targetIndex) {
+    if (targetIndex === this.currentMobilePage || this.isAnimating) return;
+    if (targetIndex < 0 || targetIndex >= this.totalMobilePages) return;
+
+    this.isAnimating = true;
+    this.currentMobilePage = targetIndex;
+    this.updateMobileSpreadState(true);
+
+    setTimeout(() => {
+      this.isAnimating = false;
+    }, 480);
+  }
+
   createPaginationDots() {
     if (!this.pageDotsContainer) return;
     this.pageDotsContainer.innerHTML = '';
@@ -618,13 +825,17 @@ class PortfolioBook {
 
   // 4. PROGRAMMATIC PAGE TURNS (Buttons & Corner Clicks)
   flipNext() {
-    if (this.currentSpread < this.totalSpreads && !this.isAnimating) {
+    if (this.isMobile) {
+      this.flipMobileNext();
+    } else if (this.currentSpread < this.totalSpreads && !this.isAnimating) {
       this.flipToSpread(this.currentSpread + 1);
     }
   }
 
   flipPrev() {
-    if (this.currentSpread > 0 && !this.isAnimating) {
+    if (this.isMobile) {
+      this.flipMobilePrev();
+    } else if (this.currentSpread > 0 && !this.isAnimating) {
       this.flipToSpread(this.currentSpread - 1);
     }
   }
@@ -864,9 +1075,14 @@ class PortfolioBook {
     if (tocItem) {
       const pageNum = parseInt(tocItem.dataset.jumpPage, 10);
       if (!isNaN(pageNum)) {
-        // Page 1 is on spread 1, Page 2 on spread 2, Page 3 on spread 2, etc.
-        const targetSpread = Math.floor(pageNum / 2) + 1;
-        this.flipToSpread(targetSpread);
+        if (this.isMobile) {
+          // Page 1 is Futuroom (mobile page 2), Page 2 is Urelia (mobile page 3), etc.
+          this.flipToMobilePage(pageNum + 1);
+        } else {
+          // Desktop: Page 1 is on spread 1, Page 2 on spread 2, etc.
+          const targetSpread = Math.floor(pageNum / 2) + 1;
+          this.flipToSpread(targetSpread);
+        }
         return;
       }
     }
@@ -883,6 +1099,42 @@ class PortfolioBook {
         return;
       }
     }
+  }
+
+  // Mobile Touch Swipe & Direct Tap Interaction
+  setupMobilePointerEvents() {
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchStartTime = 0;
+
+    this.container.addEventListener('touchstart', (e) => {
+      if (e.touches && e.touches[0]) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        touchStartTime = Date.now();
+      }
+    }, { passive: true });
+
+    this.container.addEventListener('touchend', (e) => {
+      if (e.changedTouches && e.changedTouches[0]) {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        const dt = Date.now() - touchStartTime;
+
+        // Detect clean horizontal swipe
+        if (Math.abs(dx) > 35 && Math.abs(dx) > Math.abs(dy) * 1.2 && dt < 600) {
+          if (dx < 0) {
+            this.flipMobileNext();
+          } else {
+            this.flipMobilePrev();
+          }
+        }
+      }
+    }, { passive: true });
+
+    this.container.addEventListener('click', (e) => {
+      this.handleClickInteraction(e);
+    });
   }
 
   showBehanceToast(url) {
@@ -911,10 +1163,11 @@ class PortfolioBook {
   // 7. BUTTON & KEYBOARD NAVIGATION
   setupButtonEvents() {
     if (this.prevBtn) {
-      this.prevBtn.addEventListener('click', () => this.flipPrev());
+      // Remove old listeners by replacing element or clean function
+      this.prevBtn.onclick = () => this.flipPrev();
     }
     if (this.nextBtn) {
-      this.nextBtn.addEventListener('click', () => this.flipNext());
+      this.nextBtn.onclick = () => this.flipNext();
     }
   }
 
@@ -938,30 +1191,44 @@ class PortfolioBook {
 
   // 8. RESPONSIVE RESIZE OBSERVER (Preserves exact A4 ratios)
   setupResizeObserver() {
-    if (!window.ResizeObserver) return;
-    const ro = new ResizeObserver((entries) => {
-      for (let entry of entries) {
+    window.addEventListener('resize', () => {
+      const nowMobile = (window.innerWidth <= 768);
+      if (nowMobile !== this.isMobile) {
+        this.isMobile = nowMobile;
+        this.init();
+      } else {
         this.recalculateA4Proportions();
       }
     });
-    ro.observe(this.container);
+
+    if (window.ResizeObserver) {
+      const ro = new ResizeObserver(() => {
+        this.recalculateA4Proportions();
+      });
+      ro.observe(this.container);
+    }
+
+    this.recalculateA4Proportions();
   }
 
   recalculateA4Proportions() {
     const bookEl = this.container;
-    const stageWidth = bookEl.parentElement.offsetWidth;
-    
-    // A4 Portrait Page Ratio = 1 : 1.4142
-    // Open 2-page Spread Ratio = 2 : 1.4142 = 1.4142 : 1
-    // Calculate maximum fit inside stage without viewport overflow
-    let spreadWidth = Math.min(940, stageWidth - 32);
-    if (window.innerWidth < 768) {
-      spreadWidth = Math.min(stageWidth - 20, 680);
-    }
-    const spreadHeight = Math.round(spreadWidth / 1.4142);
+    if (!bookEl || !bookEl.parentElement) return;
+    const stageWidth = bookEl.parentElement.offsetWidth || window.innerWidth;
 
-    bookEl.style.width = `${spreadWidth}px`;
-    bookEl.style.height = `${spreadHeight}px`;
+    if (this.isMobile) {
+      // Single A4 portrait page for mobile screens
+      const pageWidth = Math.min(360, stageWidth - 20, window.innerWidth - 30);
+      const pageHeight = Math.min(Math.round(pageWidth * 1.4142), 520);
+      bookEl.style.width = `${pageWidth}px`;
+      bookEl.style.height = `${pageHeight}px`;
+    } else {
+      // Open 2-page Spread Ratio = 2 : 1.4142 = 1.4142 : 1
+      let spreadWidth = Math.min(940, stageWidth - 32);
+      const spreadHeight = Math.round(spreadWidth / 1.4142);
+      bookEl.style.width = `${spreadWidth}px`;
+      bookEl.style.height = `${spreadHeight}px`;
+    }
   }
 }
 

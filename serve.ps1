@@ -90,7 +90,7 @@ public class HighSpeedStaticServer {
 
                 response.ContentType = contentType;
                 response.Headers.Add("Access-Control-Allow-Origin", "*");
-                response.Headers.Add("Cache-Control", "public, max-age=86400");
+                response.Headers.Add("Cache-Control", "no-cache, no-store, must-revalidate");
 
                 if (request.HttpMethod.Equals("HEAD", StringComparison.OrdinalIgnoreCase)) {
                     var fi = new FileInfo(fullPath);
