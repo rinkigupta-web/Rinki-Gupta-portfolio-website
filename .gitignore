@@ -19,6 +19,13 @@ desktop.ini
 node_modules/
 npm-debug.log*
 
+# Environment & Secrets (Never commit credentials)
+.env
+.env.local
+.env.*.local
+*.env
+!.env.example
+
 # Redundant archives & temporary screenshots
 *.zip
 screenshot*.png
